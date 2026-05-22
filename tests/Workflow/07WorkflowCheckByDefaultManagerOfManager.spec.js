@@ -13,7 +13,7 @@ test('test', async ({ page }) => {
     await page.waitForTimeout(800);
     await page.getByTestId('submenu-item-users').click();
     await page.waitForTimeout(800);
-    await page.getByTestId('UM-emp-list-edit-btn').nth(1).click();
+    await page.getByTestId('UM-emp-list-edit-btn').nth(2).click();
     await page.waitForTimeout(800);
     await page.locator('.absolute > .text-\\[var\\(--text-color\\)\\]').first().click();
     await page.waitForTimeout(800);
@@ -177,15 +177,12 @@ test('test', async ({ page }) => {
     await page.waitForTimeout(800);
     await page.getByRole('button', { name: 'Update' }).click();
     await page.waitForTimeout(800);
-
-    await page.getByTestId('menu-item-organization-settings').scrollIntoViewIfNeeded();
-    await page.getByTestId('menu-item-organization-settings').click({ force: true });
-
+    await page.reload();
+    await page.getByTestId('menu-item-organization-settings').click();
     await page.waitForTimeout(800);
     await page.getByTestId('submenu-item-configuration-settings').click();
     await page.waitForTimeout(800);
-
-    await page.getByTestId('p-1.rounded.transition-colors').nth(0).click();
+    await page.locator('[data-testid^="OS-AO-CS-delete-button"]').first().click();
     await page.waitForTimeout(800);
     await page.getByTestId('OS-AO-CS-delete-popup-confirm').click();
     await page.waitForTimeout(800);
@@ -193,7 +190,7 @@ test('test', async ({ page }) => {
     await page.waitForTimeout(800);
     await page.getByTestId('submenu-item-users').click();
     await page.waitForTimeout(800);
-    await page.getByRole('button', { name: 'Edit' }).click();
+    await page.getByTestId('UM-emp-list-edit-btn').nth(2).click();
     await page.waitForTimeout(800);
     await page.getByTestId('UM-AE-Manager').click();
     await page.waitForTimeout(800);
